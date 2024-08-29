@@ -10,11 +10,11 @@ import CitiesList from "@/views/CitiesList.vue";
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-      <CitiesList/>
+
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/CitiesList">About</RouterLink>
       </nav>
     </div>
   </header>
