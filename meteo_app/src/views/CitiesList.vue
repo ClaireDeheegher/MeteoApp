@@ -1,16 +1,34 @@
 <script>
 import City from "@/components/City.vue";
 import {defineComponent} from "vue";
+import relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from "dayjs";
+dayjs.extend(relativeTime);
+
 
 export default defineComponent({
   components: {City},
   data() {
     return {
-      name: 'Ma ville', // nom de la ville
-      weather: 'Peu nuageux', // descriptif météo
-      temperature: 20.55, // température en °C
-      updatedAt: new Date().toLocaleString() // date de dernière mise à jour
+
+      cities: [
+        {
+          id: 1,
+          name: 'Ville 1',
+          weather: 'Ensoleillé',
+          temperature: 22.0,
+          updatedAt: dayjs(new Date()).toNow()
+        },
+        {
+          id: 2,
+          name: 'Ville 2',
+          weather: 'Peu nuageux',
+          temperature: 19.5,
+          updatedAt: dayjs(new Date()).toNow()
+        }
+      ]
     }
+
   },
 })
 
@@ -19,7 +37,7 @@ export default defineComponent({
   <div class="about">
     <h1>Météo - Liste des villes</h1>
   </div>
-  <City :name="name"  :weather="weather" :temperature="temperature" :updatedAt="updatedAt" />/>
+  <City v-for="city in cities" :key="city.id" :name="city.name" :weather="city.weather" :temperature="city.temperature" :updatedAt="city.updatedAt" />
 </template>
 
 <style>
